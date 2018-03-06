@@ -10,6 +10,9 @@ namespace angrybirds_iago
     {
         static void Main(string[] args)
         {
+            Game game = new Game();
+            game.GobalExit = false;
+            game.Start();
         }
     }
 }
