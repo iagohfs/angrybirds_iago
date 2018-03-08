@@ -36,11 +36,13 @@ namespace angrybirds_iago
                         break;
 
                     case ConsoleKey.D3:
-                        Console.WriteLine("N/a");
+                        Console.WriteLine(". See a Score");
+                        Console.WriteLine("N/a\n");
                         /*Console.WriteLine(". See your Score.");
                         Console.WriteLine("\nEnter your Name:");
                         TypeName();
                         SeeAScore();*/
+                        PrintPlayerNameAndScore();
                         break;
 
                     case ConsoleKey.D0:
@@ -64,13 +66,13 @@ namespace angrybirds_iago
         {
             DoesPlayerExist = false;
 
-            using (var playerDb = new ABContext())
+            using (var angryBirdsDb = new ABContext())
             {
-                playerDb.Configuration.LazyLoadingEnabled = false;
+                angryBirdsDb.Configuration.LazyLoadingEnabled = false;
 
-                if (playerDb.Database.Exists())
+                if (angryBirdsDb.Database.Exists())
                 {
-                    foreach (var player in playerDb.Players)
+                    foreach (var player in angryBirdsDb.Players)
                     {
                         if (player.Name == TempPlayerName)
                         {
@@ -119,10 +121,10 @@ namespace angrybirds_iago
             mapNameInput = Console.ReadLine();
             Console.WriteLine();
 
-            using (var MapDb = new ABContext())
+            using (var angryBirdsDb = new ABContext())
             {
-                MapDb.Maps.Add(new Map { Birds = 3, MapName = mapNameInput });
-                MapDb.SaveChanges();
+                angryBirdsDb.Maps.Add(new Map { Birds = 3, MapName = mapNameInput });
+                angryBirdsDb.SaveChanges();
 
             }
         }
@@ -130,6 +132,25 @@ namespace angrybirds_iago
         public void TypeName()
         {
             TempPlayerName = Console.ReadLine();
+        }
+
+        public void PrintPlayerNameAndScore()
+        {
+            using (var angryBirdsDb = new ABContext())
+            {
+                foreach(var p in angryBirdsDb.Players)
+                {
+                    Console.WriteLine("Player Name: "+ p.Name);
+                }
+            }
+
+            using (var angryBirdsDb = new ABContext())
+            {
+                foreach (var p in angryBirdsDb.Players)
+                {
+                    Console.WriteLine("nr of maps : " + p.Maps.Count);
+                }
+            }
         }
     }
 }
