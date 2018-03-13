@@ -36,13 +36,11 @@ namespace angrybirds_iago
                         break;
 
                     case ConsoleKey.D3:
-                        Console.WriteLine(". See a Score");
-                        Console.WriteLine("N/a\n");
+                        Console.WriteLine("N/a");
                         /*Console.WriteLine(". See your Score.");
                         Console.WriteLine("\nEnter your Name:");
                         TypeName();
                         SeeAScore();*/
-                        PrintPlayerNameAndScore();
                         break;
 
                     case ConsoleKey.D0:
@@ -66,13 +64,13 @@ namespace angrybirds_iago
         {
             DoesPlayerExist = false;
 
-            using (var angryBirdsDb = new ABContext())
+            using (var playerDb = new ABContext())
             {
-                angryBirdsDb.Configuration.LazyLoadingEnabled = false;
+                playerDb.Configuration.LazyLoadingEnabled = false;
 
-                if (angryBirdsDb.Database.Exists())
+                if (playerDb.Database.Exists())
                 {
-                    foreach (var player in angryBirdsDb.Players)
+                    foreach (var player in playerDb.Players)
                     {
                         if (player.Name == TempPlayerName)
                         {
@@ -147,25 +145,6 @@ namespace angrybirds_iago
         public void TypeName()
         {
             TempPlayerName = Console.ReadLine();
-        }
-
-        public void PrintPlayerNameAndScore()
-        {
-            using (var angryBirdsDb = new ABContext())
-            {
-                foreach(var p in angryBirdsDb.Players)
-                {
-                    Console.WriteLine("Player Name: "+ p.Name);
-                }
-            }
-
-            using (var angryBirdsDb = new ABContext())
-            {
-                foreach (var p in angryBirdsDb.Players)
-                {
-                    Console.WriteLine("nr of maps : " + p.Maps.Count);
-                }
-            }
         }
     }
 }
