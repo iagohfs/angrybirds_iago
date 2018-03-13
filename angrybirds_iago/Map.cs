@@ -11,15 +11,27 @@ namespace angrybirds_iago
     [Table("MapsTable")]
     public class Map
     {
+
+        public virtual ICollection<Score> Scores { get; set; } // Nav prop
+
         [Key]
         public int MapId { get; set; }
-        public int Birds { get; set; }
+
+        [Column("BirdsLeft", TypeName = "int")]
+        public int BirdsLeft { get; set; }
 
         [Column("MapName", TypeName = "nvarchar")]
         [MaxLength(32)]
         public string MapName { get; set; }
 
-        //Nav prop
-        public virtual ICollection<Player> Players { get; set; }
+        public Map(int birdsL, string mapName)
+        {
+            BirdsLeft = birdsL;
+            MapName = mapName;
+        }
+
+        public Map() { } // Default const.      
+
+
     }
 }

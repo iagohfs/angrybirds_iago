@@ -32,7 +32,7 @@ namespace angrybirds_iago
 
                     case ConsoleKey.D2:
                         Console.WriteLine(". Add a new map");
-                        Map();
+                        AddMap();
                         break;
 
                     case ConsoleKey.D3:
@@ -60,7 +60,7 @@ namespace angrybirds_iago
             }
         }
 
-        public void CheckPlayer()
+        public void CheckPlayer() // 1
         {
             DoesPlayerExist = false;
 
@@ -86,6 +86,7 @@ namespace angrybirds_iago
                     else
                     {
                         Console.WriteLine("Welcome " + TempPlayerName + "!\n");
+                        Console.WriteLine("Adding you to the database, please hold on.\n");
                         AddPlayer(TempPlayerName);
                         //Angrybirds();
                     }
@@ -110,20 +111,34 @@ namespace angrybirds_iago
                     angryBirdsDb.Players.Add(new Player { Name = inputName });
                     angryBirdsDb.SaveChanges();
                 }
+                else
+                {
+                    Console.WriteLine("Database does not exist.");
+                    Console.WriteLine("Returning to Menu.\n");
+                }
             }
         }
 
-        public void Map()
+        public void AddMap()
         {
-            Console.WriteLine("Enter a custom name for your map: ");
-            mapNameInput = Console.ReadLine();
-            Console.WriteLine();
-
-            using (var MapDb = new ABContext())
+            using (var angryBirdsDb = new ABContext())
             {
-                MapDb.Maps.Add(new Map { Birds = 3, MapName = mapNameInput });
-                MapDb.SaveChanges();
+                if (angryBirdsDb.Database.Exists())
+                {
+                    Console.WriteLine("Enter a custom name for your map: ");
+                    mapNameInput = Console.ReadLine();
+                    Console.WriteLine();
 
+                    angryBirdsDb.Maps.Add(new Map(3, mapNameInput));
+                    angryBirdsDb.SaveChanges();
+
+                    Console.WriteLine("Map {0} added!", mapNameInput);
+                }
+                else
+                {
+                    Console.WriteLine("Database does not exist.");
+                    Console.WriteLine("Returning to Menu.\n");
+                }
             }
         }
 

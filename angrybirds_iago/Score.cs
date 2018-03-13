@@ -8,11 +8,27 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace angrybirds_iago
 {
-    [Table("Scores")]
+    [Table("ScoresTable")]
     public class Score
     {
+        // Nav prop
+        public virtual Player Player { get; set; }
+        public virtual Map Map { get; set; }
+
         [Key]
         public int Id { get; set; }
-        public int Tries { get; set; }
+
+        [Column("PlayerScore", TypeName = "int")]
+        public int PlayerScore { get; set; }
+
+        public Score(Map map, Player player, int pScore)
+        {
+            Map = map;
+            Player = player;
+            PlayerScore = pScore;
+        }
+
+        public Score() { } // Default const.                
+
     }
 }

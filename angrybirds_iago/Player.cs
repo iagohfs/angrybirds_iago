@@ -12,21 +12,24 @@ namespace angrybirds_iago
     [Table("PlayersTable")]
     public class Player
     {
-        public Player()
-        {
-            this.Maps = new HashSet<Map>();
-        }
+        // Nav prop
+        public virtual ICollection<Map> Maps { get; set; }
+        public virtual ICollection<Score> Scores { get; set; }
 
         [Key]
         public int PlayerId { get; set; }
 
-        [Column("PlayerName", TypeName = "nvarchar")]
+        [Column("Name", TypeName = "nvarchar")]
         [MaxLength(32)]
         public string Name { get; set; }
 
-        public virtual ICollection<Map> Maps { get; set; }
+        public Player(string name)
+        {
+            Name = name;
+        }
+
+        public Player() { } // Default const.        
+
     }
 
 }
-
-//player -< maps, one to many. maps <-> score, one to one.
