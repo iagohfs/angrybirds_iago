@@ -17,18 +17,12 @@ namespace angrybirds_iago
         [Key]
         public int MapId { get; set; }
 
-        [Column("BirdsLeft", TypeName = "int")]
-        public int BirdsLeft { get; set; }
+        [Column("BirdsAvailable", TypeName = "int")]
+        public int BirdsAvailable { get; set; }
 
         [Column("MapName", TypeName = "nvarchar")]
         [MaxLength(32)]
         public string MapName { get; set; }
-
-        public Map(int birdsL, string mapName)
-        {
-            BirdsLeft = birdsL;
-            MapName = mapName;
-        }
 
         public Map() { } // Default const.      
 

@@ -12,7 +12,9 @@ namespace angrybirds_iago
     public class Score
     {
         // Nav prop
+        [Column("Player")]
         public virtual Player Player { get; set; }
+        [Column("Map")]
         public virtual Map Map { get; set; }
 
         [Key]

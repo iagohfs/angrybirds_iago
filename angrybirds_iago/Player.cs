@@ -21,12 +21,7 @@ namespace angrybirds_iago
 
         [Column("Name", TypeName = "nvarchar")]
         [MaxLength(32)]
-        public string Name { get; set; }
-
-        public Player(string name)
-        {
-            Name = name;
-        }
+        public string Name { get; set; }        
 
         public Player() { } // Default const.        
 

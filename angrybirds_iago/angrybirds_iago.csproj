@@ -56,6 +56,14 @@
     <Compile Include="Migrations\201803131436586_LetsTry.Designer.cs">
       <DependentUpon>201803131436586_LetsTry.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803141316255_removedconstructors.cs" />
+    <Compile Include="Migrations\201803141316255_removedconstructors.Designer.cs">
+      <DependentUpon>201803141316255_removedconstructors.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803141337504_smallchanges.cs" />
+    <Compile Include="Migrations\201803141337504_smallchanges.Designer.cs">
+      <DependentUpon>201803141337504_smallchanges.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
@@ -69,6 +77,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201803131436586_LetsTry.resx">
       <DependentUpon>201803131436586_LetsTry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803141316255_removedconstructors.resx">
+      <DependentUpon>201803141316255_removedconstructors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803141337504_smallchanges.resx">
+      <DependentUpon>201803141337504_smallchanges.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

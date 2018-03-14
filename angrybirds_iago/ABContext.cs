@@ -23,8 +23,8 @@ namespace angrybirds_iago
                 .WithMany(m => m.Scores);
 
             scoreModel.HasRequired(s => s.Player)
-                .WithMany(p => p.Scores);            
-        }
+                .WithMany(p => p.Scores);
 
-    }    
+        }
+    }
 }
