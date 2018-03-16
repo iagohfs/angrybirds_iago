@@ -64,6 +64,10 @@
     <Compile Include="Migrations\201803141337504_smallchanges.Designer.cs">
       <DependentUpon>201803141337504_smallchanges.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803160807045_ILists.cs" />
+    <Compile Include="Migrations\201803160807045_ILists.Designer.cs">
+      <DependentUpon>201803160807045_ILists.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
@@ -83,6 +87,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803141337504_smallchanges.resx">
       <DependentUpon>201803141337504_smallchanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803160807045_ILists.resx">
+      <DependentUpon>201803160807045_ILists.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

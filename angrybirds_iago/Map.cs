@@ -11,6 +11,7 @@ namespace angrybirds_iago
     [Table("MapsTable")]
     public class Map
     {
+        private Map m;
 
         public virtual ICollection<Score> Scores { get; set; } // Nav prop
 
@@ -24,8 +25,11 @@ namespace angrybirds_iago
         [MaxLength(32)]
         public string MapName { get; set; }
 
-        public Map() { } // Default const.      
+        public Map() { } // Default const.
 
-
+        public Map(Map m)
+        {
+            this.m = m;
+        }
     }
 }

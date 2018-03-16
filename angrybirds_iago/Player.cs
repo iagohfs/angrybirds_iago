@@ -12,6 +12,8 @@ namespace angrybirds_iago
     [Table("PlayersTable")]
     public class Player
     {
+        private Player p;
+
         // Nav prop
         public virtual ICollection<Map> Maps { get; set; }
         public virtual ICollection<Score> Scores { get; set; }
@@ -25,6 +27,10 @@ namespace angrybirds_iago
 
         public Player() { } // Default const.        
 
+        public Player(Player p)
+        {
+            this.p = p;
+        }
     }
 
 }
