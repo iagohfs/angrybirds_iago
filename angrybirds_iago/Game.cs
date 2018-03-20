@@ -30,6 +30,11 @@ namespace angrybirds_iago
         private Map NewMap;
 
         #endregion
+        private ABContext angryBirdsDb;
+        public Game()
+        {
+            angryBirdsDb = new ABContext();
+        }
 
         public void Start()
         {
@@ -77,7 +82,7 @@ namespace angrybirds_iago
         {
             DoesPlayerExist = false;
 
-            using (var playerDb = new ABContext())
+            var playerDb = angryBirdsDb;
             {
                 playerDb.Configuration.LazyLoadingEnabled = false;
 
@@ -100,7 +105,7 @@ namespace angrybirds_iago
                         if (MapsAvailable)
                         {
                             ChooseMap();
-                            //AddScore();
+                            AddScore();
                         }
                         //Angrybirds();
                     }
@@ -128,7 +133,7 @@ namespace angrybirds_iago
 
         public void AddPlayer(string inputName)
         {
-            using (var angryBirdsDb = new ABContext())
+            var playerDb = angryBirdsDb;
             {
                 if (angryBirdsDb.Database.Exists())
                 {
@@ -147,7 +152,7 @@ namespace angrybirds_iago
 
         public void AddMap()
         {
-            using (var angryBirdsDb = new ABContext())
+            var playerDb = angryBirdsDb;
             {
                 if (angryBirdsDb.Database.Exists())
                 {
@@ -173,7 +178,7 @@ namespace angrybirds_iago
 
         public Player CurrentSelectedPlayer()
         {
-            using (var angryBirdsDb = new ABContext())
+            var playerDb = angryBirdsDb;
             {
                 if (angryBirdsDb.Database.Exists())
                 {
@@ -181,7 +186,7 @@ namespace angrybirds_iago
                     {
                         if (InputPlayerName == p.Name)
                         {
-                            CurrentPlayer = new Player() { PlayerId = p.PlayerId };
+                            CurrentPlayer = p;
                         }
                         else
                         {
@@ -202,7 +207,7 @@ namespace angrybirds_iago
 
         public Map CurrentSelectedMap()
         {
-            using (var angryBirdsDb = new ABContext())
+            var playerDb = angryBirdsDb;
             {
                 if (angryBirdsDb.Database.Exists())
                 {
@@ -210,7 +215,8 @@ namespace angrybirds_iago
                     {
                         if (CurrentMapName == m.MapName)
                         {
-                            CurrentMap = new Map() { MapId = m.MapId };
+                            return m;
+                            //CurrentMap = m;
                         }
                     }
                 }
@@ -221,7 +227,7 @@ namespace angrybirds_iago
                     CurrentMap = null;
                 }
             }
-            return CurrentMap;
+            return null;
         }
 
         public void AddScore()
@@ -237,7 +243,7 @@ namespace angrybirds_iago
             testintinput = int.Parse(Console.ReadLine());
             #endregion
 
-            using (var angryBirdsDb = new ABContext())
+            var playerDb = angryBirdsDb;
             {
                 if (angryBirdsDb.Database.Exists())
                 {
@@ -277,7 +283,7 @@ namespace angrybirds_iago
                 InputMapNumber = int.Parse(Console.ReadLine());
                 Console.WriteLine();
 
-                using (var angryBirdsDb = new ABContext())
+                var playerDb = angryBirdsDb;
                 {
                     if (angryBirdsDb.Database.Exists())
                     {
@@ -309,7 +315,7 @@ namespace angrybirds_iago
 
         public void PrintMaps()
         {
-            using (var angryBirdsDb = new ABContext())
+            var playerDb = angryBirdsDb;
             {
                 if (angryBirdsDb.Database.Exists())
                 {
