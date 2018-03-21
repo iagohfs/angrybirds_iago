@@ -12,7 +12,7 @@ namespace angrybirds_iago
         {
             Game game = new Game();
             game.GobalExit = false;
-            game.Start();
+            game.StartMenu();
         }
     }
 }
