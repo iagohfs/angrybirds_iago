@@ -1,0 +1,5 @@
+Jag kollade genom Ginos labb och jag tyckte att deras kod struktur var bra med en bra användning av context.
+Utvecklad kod med bra logik i den, inga konstigheter.
+Det som jag tyckte att det kunde förbättras var att lägga till en gameplay så allt ändrades automatisk istället för 
+att man ändrade saker och ting för hand. Och när man tryckte på exit så exitade den inte.
+Förutom det var allt bra!
